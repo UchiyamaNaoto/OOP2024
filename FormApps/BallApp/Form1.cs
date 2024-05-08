@@ -1,41 +1,47 @@
 namespace BallApp {
     public partial class Form1 : Form {
-        private double posX;    //x座標
-        private double posY;    //y座標
-        private double moveX;   //移動量（x方向）
-        private double moveY;   //移動量（y方向）
+
+        //Listコレクション
+        private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
+        private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
         //コンストラクタ
         public Form1() {
             InitializeComponent();
-
-            moveX = moveY = 10;
         }
 
         //フォームが最初にロードされるとき一度だけ実行される
         private void Form1_Load(object sender, EventArgs e) {
-            //this.BackColor = Color.Green;
-            timer1.Start();
+
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            //現在位置を表示
-            this.Text = pbBall.Location.ToString();
-
-            if (pbBall.Location.X > 750 || pbBall.Location.X < 0) {
-                //移動量の符号を反転
-                moveX = -moveX;
+            
+            for (int i = 0; i < balls.Count; i++) {
+                balls[i].Move();
+                pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
             }
+        }
 
-            if (pbBall.Location.Y > 500 || pbBall.Location.Y < 0) {
-                //移動量の符号を反転
-                moveY = -moveY;
+        private void Form1_MouseClick(object sender, MouseEventArgs e) {
+            PictureBox pb = new PictureBox();   //画像を表示するコントロール
+            Obj ball = null;
+
+            if (e.Button == MouseButtons.Left) {
+                ball = new SoccerBall(e.X - 25, e.Y - 25);
+                pb.Size = new Size(50, 50);
+            } else if (e.Button == MouseButtons.Right) {
+                ball = new TennisBall(e.X - 12, e.Y - 12);
+                pb.Size = new Size(25, 25);
             }
+            pb.Image = ball.Image;
+            pb.Location = new Point((int)ball.PosX, (int)ball.PosY);
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.Parent = this;
+            timer1.Start();
 
-            posX += moveX;
-            posY += moveY;
-
-            pbBall.Location = new Point((int)posX, (int)posY);
+            balls.Add(ball);
+            pbs.Add(pb);
         }
     }
 }
