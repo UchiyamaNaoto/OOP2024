@@ -12,7 +12,7 @@ namespace BallApp {
 
         //フォームが最初にロードされるとき一度だけ実行される
         private void Form1_Load(object sender, EventArgs e) {
-
+            this.Text = "BallApp SoccerBall:0  TennisBall:0";
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
@@ -30,6 +30,7 @@ namespace BallApp {
             if (e.Button == MouseButtons.Left) {
                 ball = new SoccerBall(e.X - 25, e.Y - 25);
                 pb.Size = new Size(50, 50);
+
             } else if (e.Button == MouseButtons.Right) {
                 ball = new TennisBall(e.X - 12, e.Y - 12);
                 pb.Size = new Size(25, 25);
@@ -42,6 +43,8 @@ namespace BallApp {
 
             balls.Add(ball);
             pbs.Add(pb);
+
+            this.Text = "BallApp SoccerBall:" + SoccerBall.Count + "  TennisBall:" + TennisBall.Count;
         }
     }
 }
