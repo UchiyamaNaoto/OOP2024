@@ -1,5 +1,9 @@
+using static System.Formats.Asn1.AsnWriter;
+
 namespace BallApp {
     public partial class Form1 : Form {
+
+        private int scoreCount = 0; //スコアカウント用
 
         //Listコレクション
         private List<Obj> balls = new List<Obj>();    //ボールインスタンス格納用
@@ -18,6 +22,8 @@ namespace BallApp {
         private void Form1_Load(object sender, EventArgs e) {
             this.Text = "BallApp SoccerBall:0  TennisBall:0";
 
+            score.Text = "スコア：" + this.scoreCount;
+
             bar = new Bar(340, 500);
             pbBar = new PictureBox();
 
@@ -31,8 +37,12 @@ namespace BallApp {
         private void timer1_Tick(object sender, EventArgs e) {
 
             for (int i = 0; i < balls.Count; i++) {
-                balls[i].Move(pbBar, pbs[i]);
-                pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
+                if (!balls[i].Move(pbBar, pbs[i])) {
+                    //落下したボールインスタンスを削除する 
+
+                } else {
+                    pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
+                }
             }
         }
 

@@ -33,10 +33,14 @@ namespace BallApp {
                 MoveX = -MoveX;
             }
 
-            if (PosY > 500 || PosY < 0 || rBar.IntersectsWith(rBall)) {
+            //バーに当たったかの判定（IntersectsWith）
+            if (PosY < 0 || rBar.IntersectsWith(rBall)) {
                 //移動量の符号を反転
                 MoveY = -MoveY;
             }
+            //下に落下したか？
+            if (PosY > 500)
+                return false;
 
             PosX += MoveX;
             PosY += MoveY;
