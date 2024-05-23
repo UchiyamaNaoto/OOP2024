@@ -14,13 +14,15 @@ namespace BallApp {
         public TennisBall(double xp, double yp)
             : base(xp, yp, @"Picture\tennis_ball.png") {
 
-            MoveX = random.Next(-25, 25); //移動量設定
-            MoveY = random.Next(-25, 25); ;
+            MoveX = random.Next(-15, 15); //移動量設定
+            MoveY = random.Next(-15, 15); ;
 
             Count++;
         }
 
-        public override bool Move(PictureBox pbBar, PictureBox pbBall) {
+        //戻り値：０…移動OK、１…落下した、２…バーに当たった
+        public override int Move(PictureBox pbBar, PictureBox pbBall) {
+            int ret = 0;
             Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y,
                                                          pbBar.Width, pbBar.Height);
 
@@ -36,14 +38,21 @@ namespace BallApp {
                 MoveY = -MoveY;
             }
 
-            //下に落下したか？
-            if (PosY > 500)
-                return false;
+            //バーに当たったかの判定（IntersectsWith）
+            if (rBar.IntersectsWith(rBall)) {
+                MoveY = -MoveY;
+                ret = 2;
+            }
 
             PosX += MoveX;
             PosY += MoveY;
 
-            return true;
+            //下に落下したか？
+            if (PosY > 600)
+                ret = 1;
+
+            //移動完了
+            return ret;
         }
 
         public override bool Move(Keys direction) {
