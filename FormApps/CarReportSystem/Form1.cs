@@ -156,6 +156,11 @@ namespace CarReportSystem {
         private void btModifyReport_Click(object sender, EventArgs e) {
             if ((dgvCarReport.CurrentRow == null)
                 || (!dgvCarReport.CurrentRow.Selected)) return;
+            
+            if (cbAuthor.Text == "" || cbCarName.Text == "") {
+                tslbMessage.Text = "ãLò^é“ÅAÇ‹ÇΩÇÕé‘ñºÇ™ñ¢ì¸óÕÇ≈Ç∑";
+                return;
+            }
 
             listCarReports[dgvCarReport.CurrentRow.Index].Date = dtpDate.Value;
             listCarReports[dgvCarReport.CurrentRow.Index].Author = cbAuthor.Text;

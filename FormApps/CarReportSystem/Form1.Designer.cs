@@ -154,10 +154,12 @@
             // rbOther
             // 
             rbOther.AutoSize = true;
+            rbOther.Checked = true;
             rbOther.Location = new Point(307, 15);
             rbOther.Name = "rbOther";
             rbOther.Size = new Size(56, 19);
             rbOther.TabIndex = 0;
+            rbOther.TabStop = true;
             rbOther.Text = "その他";
             rbOther.UseVisualStyleBackColor = true;
             // 
@@ -348,6 +350,7 @@
             ssMessageArea.Location = new Point(0, 499);
             ssMessageArea.Name = "ssMessageArea";
             ssMessageArea.Size = new Size(780, 22);
+            ssMessageArea.SizingGrip = false;
             ssMessageArea.TabIndex = 8;
             ssMessageArea.Text = "statusStrip1";
             // 
@@ -383,6 +386,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "試乗レポート管理システム";
             Load += Form1_Load;
