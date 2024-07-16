@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using System.Xml;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Reflection;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -301,6 +302,14 @@ namespace CarReportSystem {
             catch (Exception) {
                 MessageBox.Show("設定ファイル書き込みエラー");
             }
+        }
+
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            var fmversion = new fmVersion();
+            fmversion.ShowDialog();
+
+
+
         }
     }
 }
