@@ -9,7 +9,6 @@
 		<Title>CarReportSystem</Title>
 		<Version>1.2.12.1</Version>
 		<Authors>山田ひろし</Authors>
-		<ApplicationIcon>Icon1.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -405,7 +405,7 @@
             保存ToolStripMenuItem1.Name = "保存ToolStripMenuItem1";
             保存ToolStripMenuItem1.Size = new Size(119, 22);
             保存ToolStripMenuItem1.Text = "保存...";
-            保存ToolStripMenuItem1.Click += 保存ToolStripMenuItem1_Click;
+            保存ToolStripMenuItem1.Click += 保存ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -532,7 +532,6 @@
         private ToolStripMenuItem 色設定ToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem 終了ToolStripMenuItem;
-        private ToolStripSeparator 保存ToolStripMenuItem;
         private ColorDialog cdColor;
         private ToolStripMenuItem ヘルプHToolStripMenuItem;
         private ToolStripMenuItem このアプリについてToolStripMenuItem;

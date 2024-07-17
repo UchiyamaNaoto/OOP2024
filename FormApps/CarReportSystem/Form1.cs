@@ -272,7 +272,7 @@ namespace CarReportSystem {
             ReportOpenFile();//ファイルオープン処理
         }
 
-        private void 保存ToolStripMenuItem1_Click(object sender, EventArgs e) {
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
             ReportSaveFile();//ファイルセーブ処理
         }
 
