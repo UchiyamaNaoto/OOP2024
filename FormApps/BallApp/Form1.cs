@@ -10,8 +10,8 @@ namespace BallApp {
         private List<PictureBox> pbs = new List<PictureBox>();      //表示用
 
         //バー用
-        private Bar bar;
-        private PictureBox pbBar;
+        private Bar bar = null!;
+        private PictureBox pbBar = null!;
 
         //コンストラクタ
         public Form1() {
@@ -61,7 +61,7 @@ namespace BallApp {
         //マウスクリックイベントハンドラ
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
             PictureBox pb = new PictureBox();   //画像を表示するコントロール
-            Obj ball = null;
+            Obj? ball = null;
 
             if (e.Button == MouseButtons.Left) {
                 ball = new SoccerBall(e.X - 25, e.Y - 25);
@@ -71,7 +71,7 @@ namespace BallApp {
                 ball = new TennisBall(e.X - 12, e.Y - 12);
                 pb.Size = new Size(25, 25);
             }
-            pb.Image = ball.Image;
+            pb.Image = ball!.Image;
             pb.Location = new Point((int)ball.PosX, (int)ball.PosY);
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
             pb.Parent = this;
