@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -21,10 +20,10 @@ namespace Exercise01 {
             Exercise1_3("employees.xml");
             Console.WriteLine();
 
-            //Exercise1_4("employees.json");
+            Exercise1_4("employees.json");
 
-            //// これは確認用
-            //Console.WriteLine(File.ReadAllText("employees.json"));
+            // これは確認用
+            Console.WriteLine(File.ReadAllText("employees.json"));
         }
 
         private static void Exercise1_1(string outfile) {
@@ -70,6 +69,29 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(string file) {
+            var emps = new Employee[] {
+                new Employee {
+                    Id = 123,
+                    Name = "出井 秀行",
+                    HireDate = new DateTime(2001, 5, 10),
+                },
+                new Employee {
+                    Id = 139,
+                    Name = "大橋 孝仁",
+                    HireDate = new DateTime(2004, 12, 1),
+                },
+            };
+
+            using (var stream = new FileStream(file, FileMode.Create, FileAccess.Write)) {
+                
+                var options = new JsonSerializerOptions {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,  //キー名のカスタマイズ
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                    WriteIndented = true,
+                };
+
+                JsonSerializer.Serialize(stream, emps, options);
+            }
 
         }
     }
