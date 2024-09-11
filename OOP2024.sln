@@ -129,6 +129,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section02", "Chapter12\Sect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebViewTest", "FormApps\WebViewTest\WebViewTest.csproj", "{D4DB3908-D978-462D-8A0A-ABD018FDF4C2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter13", "Chapter13", "{9F2CF5D8-A186-4CE9-9F6C-270F523D2274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEntityFramework", "Chapter13\SampleEntityFramework\SampleEntityFramework.csproj", "{C3A8B6E6-2AFD-4473-A3A4-7495BF6A13F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -295,6 +299,10 @@ Global
 		{D4DB3908-D978-462D-8A0A-ABD018FDF4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4DB3908-D978-462D-8A0A-ABD018FDF4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4DB3908-D978-462D-8A0A-ABD018FDF4C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A8B6E6-2AFD-4473-A3A4-7495BF6A13F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A8B6E6-2AFD-4473-A3A4-7495BF6A13F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A8B6E6-2AFD-4473-A3A4-7495BF6A13F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A8B6E6-2AFD-4473-A3A4-7495BF6A13F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -349,6 +357,7 @@ Global
 		{8D661F5D-1314-44D2-9986-05C37FF5012B} = {7E17200F-3945-4A20-91B2-0A291C42A25A}
 		{5A9BFBEF-6D8A-4E35-A66A-BCF1B6EB0477} = {E3205B5A-140B-473A-8F6A-486635B25458}
 		{48D66483-4793-43F3-91D5-040A1C9E0DDC} = {0E888CA8-B1ED-4615-94B8-D80FAA709165}
+		{C3A8B6E6-2AFD-4473-A3A4-7495BF6A13F1} = {9F2CF5D8-A186-4CE9-9F6C-270F523D2274}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97EF6D91-4F4B-4007-9422-CDB086A0EF6F}
