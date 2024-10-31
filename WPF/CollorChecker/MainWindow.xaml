@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollorChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="700">
+        Title="ColorChecker" Height="300" Width="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,19 +30,35 @@
 
             <TextBlock Grid.Row="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="R"/>
             <Slider x:Name="rSlider" Maximum="255" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
-            <TextBox x:Name="rValue" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="rValue" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="17" Margin="5"
+                     Text="{Binding ElementName=rSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
 
             <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="G"/>
             <Slider x:Name="gSlider" Maximum="255" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  ValueChanged="Slider_ValueChanged"/>
-            <TextBox x:Name="gValue" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="gValue" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontSize="20"
+                     Text="{Binding ElementName=gSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
 
             <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="B"/>
             <Slider x:Name="bSlider" Maximum="255" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  ValueChanged="Slider_ValueChanged"/>
-            <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="bValue" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="20"
+                     Text="{Binding ElementName=bSlider,Path=Value,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat={}{0:0}}"/>
 
-            <ComboBox x:Name="colorSelectComboBox" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"/>
+            <ComboBox x:Name="colorSelectComboBox" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Grid.ColumnSpan="3" Grid.Row="3" Margin="20,0" VerticalAlignment="Center" SelectionChanged="colorSelectComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black"  >
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
-        
+
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -50,7 +66,7 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" FontSize="16" Margin="10" Click="stockButton_Click" />
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10,0,10,10" />
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10,0,10,10" SelectionChanged="stockList_SelectionChanged" FontSize="16" FontFamily="BIZ UDGothic" />
         </Grid>
 
     </Grid>
