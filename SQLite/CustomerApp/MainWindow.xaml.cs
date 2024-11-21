@@ -2,6 +2,9 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +29,15 @@ namespace CustomerApp {
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
+            Bitmap bmp = new Bitmap(@"C:\Users\infosys\Desktop\画像集\30ソアラ.jpg");
+            MemoryStream ms = new MemoryStream();
+
+
             var customer = new Customer() {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
+                Picture = ms.ToArray(),
             };
             
             using(var connection = new SQLiteConnection(App.databasePass)) {
@@ -39,7 +47,7 @@ namespace CustomerApp {
             ReadDatabase(); //ListView表示
         }
 
-        private void ReadButton_Click(object sender, RoutedEventArgs e) {
+        private void UpdateButton_Click(object sender, RoutedEventArgs e) {
            
 
 
@@ -69,9 +77,7 @@ namespace CustomerApp {
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Delete(item);
-
                 ReadDatabase(); //ListView表示
-
             }
 
 
@@ -79,6 +85,12 @@ namespace CustomerApp {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             ReadDatabase(); //ListView表示
+        }
+
+        private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            NameTextBox.Text = _customers[CustomerListView.SelectedIndex].Name;
+
+
         }
     }
 }
