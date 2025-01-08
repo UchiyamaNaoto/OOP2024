@@ -1,10 +1,24 @@
+﻿from dataclasses import dataclass
 
-from flask import Flask
+@dataclass #クラスの定義
+class Item:
+    kind: str
+    price : int
 
-app = Flask(__name__)
+def tax_included_price(item):
+    if item.kind == "food":
+        return round(item.price * 1.08)
+    else:
+        return round(item.price * 1.1)
 
-def hello():
-    return "Hello Python!"
+def total_amount(items):
+    amounts = [tax_included_price(item) for item in items] #内包表記
+    return sum(amounts)
 
-if __name__ == '__main__':
-    app.run('localhost,4449')
+items = [Item("food",200),
+         Item("book",1000),
+         Item("food",100),]
+print(total_amount(items))
+
+
+

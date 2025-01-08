@@ -1,0 +1,54 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c75a6fce-fd7e-4e02-a57f-69975ab1e552</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>solar_system.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>solar_system</Name>
+    <RootNamespace>solar_system</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="draw_planets_moving_constant.py" />
+    <Compile Include="draw_planets_with_horizons_api.py" />
+    <Compile Include="draw_planets_with_horizons_api_list15.py" />
+    <Compile Include="draw_planets_with_horizons_api_list16.py" />
+    <Compile Include="solar_system.py" />
+    <Compile Include="src\camera.py" />
+    <Compile Include="src\database.py" />
+    <Compile Include="src\draw_text.py" />
+    <Compile Include="src\geometry.py" />
+    <Compile Include="src\horizons_api.py" />
+    <Compile Include="src\horizons_settings.py" />
+    <Compile Include="src\make_planets.py" />
+    <Compile Include="src\planet.py" />
+    <Compile Include="src\planet_settings.py" />
+    <Compile Include="src\vector_util.py" />
+    <Compile Include="src\window.py" />
+    <Compile Include="src\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

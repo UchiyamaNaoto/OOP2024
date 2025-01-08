@@ -51,6 +51,7 @@ namespace CustomerApp {
                 connection.CreateTable<Customer>();
                 connection.Insert(customer);
             }
+            editClear();
             ReadDatabase(); //ListView表示
         }
 
@@ -80,6 +81,7 @@ namespace CustomerApp {
                 MessageBox.Show("削除する行を選択してください");
                 return;
             }
+            editClear();
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
@@ -99,9 +101,21 @@ namespace CustomerApp {
                 NameTextBox.Text = _customers[CustomerListView.SelectedIndex].Name;
                 PhoneTextBox.Text = _customers[CustomerListView.SelectedIndex].Phone;
                 AddressTextBox.Text = _customers[CustomerListView.SelectedIndex].Address;
-                PictureImageBox.Source = Create(_customers[CustomerListView.SelectedIndex].Picture);
+                if (_customers[CustomerListView.SelectedIndex].Picture!= null) {
+                    PictureImageBox.Source = Create(_customers[CustomerListView.SelectedIndex].Picture);
+                } else {
+                    PictureImageBox.Source = null;
+                }
             }
         }
+
+        private void editClear() {
+            NameTextBox.Text = "";
+            PhoneTextBox.Text = "";
+            AddressTextBox.Text = "";
+            PictureImageBox.Source = null;
+        }
+
         public static BitmapImage Create(byte[] bytes) {
             var result = new BitmapImage();
 
